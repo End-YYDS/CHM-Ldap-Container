@@ -1,0 +1,23 @@
+dn: cn=webRole,cn=schema,cn=config
+changetype: add
+objectClass: olcSchemaConfig
+cn: webRole
+olcAttributeTypes: ( 1.3.6.1.4.1.99999.1
+  NAME 'color'
+  DESC 'Color string for web roles'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256}
+  SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.99999.2
+  NAME 'permissions'
+  DESC 'Numeric permissions for web roles'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE )
+olcObjectClasses: ( 1.3.6.1.4.1.99999.3
+  NAME 'webRole'
+  DESC 'Custom Web Role object'
+  SUP top
+  AUXILIARY
+  MAY ( color $ permissions ) )
